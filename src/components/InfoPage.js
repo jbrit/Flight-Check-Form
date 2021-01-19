@@ -1,10 +1,10 @@
 import React from "react";
 import countryList from "./country-list";
+import { arrayFromNationality } from "./constants";
 
 const validateFields = (fields) =>
   fields.filter((field) => !field.trim()).length !== 0;
-
-const InfoPage = ({ fields, setFields }) => {
+const InfoPage = ({ fields, setFields, extrafields }) => {
   const { step, lastName, firstName, email, nationality, passportNo } = fields;
   const {
     setStep,
@@ -48,6 +48,7 @@ const InfoPage = ({ fields, setFields }) => {
         value={passportNo}
         onChange={(e) => setPassportNo(e.target.value)}
       />
+      {extrafields(arrayFromNationality(nationality))}
       <div className="flex justify-between mt-8">
         <button onClick={() => setStep(step - 1)}>Back</button>
         <button

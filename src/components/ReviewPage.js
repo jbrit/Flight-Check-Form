@@ -1,7 +1,8 @@
 import React from "react";
 import countryList from "./country-list";
+import { arrayFromNationality } from "./constants";
 
-const InfoPage = ({ fields, setFields }) => {
+const InfoPage = ({ fields, setFields, extrafields }) => {
   const { step, lastName, firstName, email, nationality, passportNo } = fields;
   const { setStep } = setFields;
   return (
@@ -25,6 +26,7 @@ const InfoPage = ({ fields, setFields }) => {
       <input type="email" value={email} disabled readOnly />
       <label>Passport No:</label>
       <input type="text" value={passportNo} disabled readOnly />
+      {extrafields(arrayFromNationality(nationality), true)}
       <div className="flex justify-between mt-8">
         <button onClick={() => setStep(step - 1)}>Back</button>
         <button onClick={() => setStep(step + 1)}>Next</button>
