@@ -19,7 +19,11 @@ const StartPage = ({ fields, setFields }) => {
         placeholder="Last Name"
         onChange={(e) => setLastName(e.target.value)}
       />
-      <button className="block mx-auto" onClick={() => setStep(step + 1)}>
+      <button
+        disabled={!lastName.trim() | !flightNo.trim()}
+        className="block mx-auto"
+        onClick={() => setStep(step + 1)}
+      >
         Continue
       </button>
     </div>
